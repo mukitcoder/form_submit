@@ -19,7 +19,6 @@ $survey_useful = [];
 $comment = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Validate form inputs
     $name = form_validate($_POST['name'] ?? '');
     $age = is_numeric($_POST['age'] ?? null) ? form_validate($_POST['age']) : '';
     $email = form_validate($_POST['email'] ?? '');
@@ -37,10 +36,10 @@ function form_validate($form_field_value) {
 }
 ?>
 
-<section class="overflow-hidden">
+<section class="overflow-hidden container">
     <div class="row g-4">
         <div class="col-md-6 col-12">
-            <div class="container">
+            <div class="">
                 <div class="header">
                     <h1 class="text-center">Survey Form</h1>
                     <p class="text-center mb-5">
@@ -141,15 +140,38 @@ function form_validate($form_field_value) {
         <div class="col-md-6 col-12">
             <div class="data">    
                 <h3>Form Data</h3>
-                <ul>
-                    <li>Name: <?php echo $name; ?></li>
-                    <li>Email: <?php echo $email; ?></li>
-                    <li>Age: <?php echo $age; ?></li>
-                    <li>Role: <?php echo $role; ?></li>
-                    <li>Recommendation: <?php echo $recommendation; ?></li>
-                    <li>Survey Useful: <?php echo implode(', ', $survey_useful); ?></li>
-                    <li>Comment: <?php echo $comment; ?></li>
-                </ul>
+                <table class="table table-bordered table-striped">
+                    <tbody>
+                        <tr>
+                            <th scope="row">Name</th>
+                            <td><?php echo $name; ?></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Email</th>
+                            <td><?php echo $email; ?></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Age</th>
+                            <td><?php echo $age; ?></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Role</th>
+                            <td><?php echo $role; ?></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Recommendation</th>
+                            <td><?php echo $recommendation; ?></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Survey Useful</th>
+                            <td><?php echo implode(', ', $survey_useful); ?></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Comment</th>
+                            <td><?php echo $comment; ?></td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
